@@ -1,0 +1,24 @@
+h1 {
+    color: teal;
+}
+
+h2 {
+    font-style: italic;
+    color: red;
+}
+
+h3 {
+    font-family: 'Courier';
+}
+
+h4 {
+    font-family: 'Arial';
+}
+
+h5 {
+    text-align: center;
+}
+
+h6 {
+    text-align: right;
+}
