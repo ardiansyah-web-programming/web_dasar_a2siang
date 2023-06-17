@@ -4,12 +4,14 @@ require "functions.php";
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Program Studi</title>
 </head>
+
 <body>
     <h1>Halaman Prodi</h1>
     <form action="" method="post">
@@ -29,29 +31,32 @@ require "functions.php";
             <th>ID</th>
             <th>Nama Prodi</th>
         </tr>
-        <?php 
-        foreach(prodi() as $p) : ?>
-        <tr>
-            <td><?php echo $p["id"] ?></td>
-            <td><?php echo $p["nama_prodi"] ?></td>
-        </tr>
+        <?php
+        foreach (prodi() as $p) : ?>
+            <tr>
+                <td><?php echo $p["id"] ?></td>
+                <td><?php echo $p["nama_prodi"] ?></td>
+            </tr>
         <?php endforeach;
         ?>
     </table>
     <?php
-    if (@$_POST["simpan_prodi"] == "klik") {
+    $tanggal_hari_ini = date("Y-m-d H:i:s");
+
+    if (isset($_POST["simpan_prodi"])) {
         $nama_prodi = @$_POST["nama_prodi"];
         if ($nama_prodi == "") {
             echo "Nama Prodi masih kosong!";
-        }else {
-            $t = q("INSERT INTO prodi VALUES(null,'$nama_prodi')");
+        } else {
+            $t = q("INSERT INTO prodi_umsu VALUES(null,'$nama_prodi','$tanggal_hari_ini','$tanggal_hari_ini')");
             if ($t) {
                 echo "Data berhasil ditambahkan!";
-            }else {
+            } else {
                 echo "Nama Prodi sudah ada sebelumnya!";
             }
         }
     }
     ?>
 </body>
+
 </html>
