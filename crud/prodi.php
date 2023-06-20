@@ -14,7 +14,7 @@ require "functions.php";
 
 <body>
     <h1>Halaman Prodi</h1>
-    <form action="" method="post">
+    <form action="simpan_prodi.php" method="post">
         <table>
             <tr>
                 <th>Nama Program Studi</th>
@@ -30,33 +30,22 @@ require "functions.php";
         <tr>
             <th>ID</th>
             <th>Nama Prodi</th>
+            <th>Opsi</th>
         </tr>
         <?php
         foreach (prodi() as $p) : ?>
             <tr>
                 <td><?php echo $p["id"] ?></td>
                 <td><?php echo $p["nama_prodi"] ?></td>
+                <td>
+                    <a href="edit.php">Edit</a>
+                    <a href="hapus.php?id=<?= $p["id"]; ?>">Hapus</a>
+                </td>
             </tr>
         <?php endforeach;
         ?>
     </table>
-    <?php
-    $tanggal_hari_ini = date("Y-m-d H:i:s");
 
-    if (isset($_POST["simpan_prodi"])) {
-        $nama_prodi = @$_POST["nama_prodi"];
-        if ($nama_prodi == "") {
-            echo "Nama Prodi masih kosong!";
-        } else {
-            $t = q("INSERT INTO prodi_umsu VALUES(null,'$nama_prodi','$tanggal_hari_ini','$tanggal_hari_ini')");
-            if ($t) {
-                echo "Data berhasil ditambahkan!";
-            } else {
-                echo "Nama Prodi sudah ada sebelumnya!";
-            }
-        }
-    }
-    ?>
 </body>
 
 </html>
