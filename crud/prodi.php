@@ -30,6 +30,8 @@ require "functions.php";
         <tr>
             <th>ID</th>
             <th>Nama Prodi</th>
+            <th>Create</th>
+            <th>Update</th>
             <th>Opsi</th>
         </tr>
         <?php
@@ -37,14 +39,24 @@ require "functions.php";
             <tr>
                 <td><?php echo $p["id"] ?></td>
                 <td><?php echo $p["nama_prodi"] ?></td>
+                <td><?= $p["buat"]; ?></td>
+                <td><?= $p["edit"]; ?></td>
                 <td>
-                    <a href="edit.php">Edit</a>
-                    <a href="hapus.php?id=<?= $p["id"]; ?>">Hapus</a>
+                    <a href="edit.php?id=<?php echo $p["id"]; ?>">Edit</a>
+                    <a href="javascript:konfirmasi_hapus('hapus.php?id=<?= $p["id"]; ?>')">Hapus</a>
                 </td>
             </tr>
         <?php endforeach;
         ?>
     </table>
+
+    <script>
+        function konfirmasi_hapus(data) {
+            if (confirm("Apakah data berikut akan dihapus?")) {
+                document.location = data
+            }
+        }
+    </script>
 
 </body>
 

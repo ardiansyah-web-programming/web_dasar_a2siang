@@ -21,3 +21,16 @@ function prodi()
 {
     return q("SELECT * FROM prodi_umsu ORDER BY id ASC");
 }
+
+function prodi_satu($id, $isi_tabel)
+{
+    $x = mysqli_fetch_assoc(
+        q("SELECT * FROM prodi_umsu WHERE id = '$id'")
+    );
+    return $x[$isi_tabel];
+}
+
+function prodi_satu_jumlah($id)
+{
+    return mysqli_num_rows(q("SELECT * FROM prodi_umsu WHERE id = '$id'"));
+}
