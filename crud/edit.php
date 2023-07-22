@@ -9,6 +9,10 @@ if (prodi_satu_jumlah($id) < 1) {
   </script>
   ";
 }
+session_start();
+if (@$_SESSION["login"] == false and @$_SESSION["username"] == "") {
+  header("Location: login.php");
+}
 ?>
 
 <!DOCTYPE html>

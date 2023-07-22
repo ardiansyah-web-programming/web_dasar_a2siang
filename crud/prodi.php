@@ -1,5 +1,9 @@
 <?php
 require "functions.php";
+session_start();
+if (@$_SESSION["login"] == false and @$_SESSION["username"] == "") {
+    header("Location: login.php");
+}
 ?>
 
 <!DOCTYPE html>
